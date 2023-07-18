@@ -19,8 +19,7 @@ public class SpringDI {
         context.scan("ru.job4j.di");
         context.refresh();
         StartUI ui = context.getBean(StartUI.class);
-        StartUI.ConsoleInput consoleInput = context.getBean(StartUI.ConsoleInput.class);
-        consoleInput.askStr("Do your know who is creator?");
+        ui.askStr("Do your know who is creator?");
         ui.add("Petr Arsentev");
         ui.print();
     }

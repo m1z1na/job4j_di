@@ -1,18 +1,17 @@
 package ru.job4j.di;
 
 
-import java.util.Scanner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class StartUI {
-
+    @Autowired
     private Store store;
 
-    public StartUI(Store store) {
-        this.store = store;
-    }
+    @Autowired
+    private ConsoleInput сonsoleInput;
+
 
     public void add(String value) {
         store.add(value);
@@ -23,14 +22,8 @@ public class StartUI {
             System.out.println(value);
         }
     }
-    @Component
-    public class ConsoleInput {
 
-        private Scanner scanner = new Scanner(System.in);
-
-        public String askStr(String question) {
-            System.out.print(question);
-            return scanner.nextLine();
-        }
+    public String askStr(String question) {
+        return сonsoleInput.askStr(question);
     }
 }
